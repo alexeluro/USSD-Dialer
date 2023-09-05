@@ -60,10 +60,7 @@ class UssdHomeFragment : Fragment() {
             // launch intent here
             checkForPermission {
                 Timber.d("USSD code: ${ussdCode.ussdCode}")
-                val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:${ussdCode.ussdCode}"))
-//                val intent = Intent(Intent.ACTION_DIAL).also {
-//                    it.data = Uri.parse("tel:${ussdCode}")
-//                }
+                val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:${Uri.encode(ussdCode.ussdCode)}"))
 
                 requireActivity().startActivity(intent)
             }
